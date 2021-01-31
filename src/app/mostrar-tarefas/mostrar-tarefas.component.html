@@ -1,0 +1,21 @@
+<mat-card style="max-width: 400px; margin: 0% 5% 0;">
+    <mat-list>
+        <div  mat-subheader>Tarefas</div>
+        <div *ngFor="let tarefa of tarefas" class="">
+            <mat-list-item *ngIf="!tarefa.concluido">
+                <div mat-line>{{tarefa.nome}}</div>
+                <button [matBadge]="tarefa.tempo" matBadgePosition="before" matBadgeColor="primary" style="margin-left: 2%;" mat-stroked-button>Começar</button>
+            </mat-list-item>
+        </div>
+        
+        <mat-divider></mat-divider>
+        <div mat-subheader>Tarefas Concluidas</div>
+        <div *ngFor="let tarefa of tarefas" class="">
+            <mat-list-item *ngIf="tarefa.concluido">
+                <div mat-line>{{tarefa.nome}}</div>
+                <button style="margin-left: 2%;" mat-button>Concluido</button>
+            </mat-list-item>
+        </div>
+        
+    </mat-list>
+</mat-card>
