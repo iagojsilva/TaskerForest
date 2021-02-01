@@ -1,0 +1,7 @@
+<mat-list-item *ngIf="!concluido">
+    <div mat-line>
+    {{nome}}
+    <ng-content></ng-content>
+    </div>
+    <button [matBadge]="tempo" matBadgePosition="before" matBadgeColor="primary" style="margin-left: 2%;" mat-stroked-button>Começar</button>
+</mat-list-item>

@@ -1,21 +1,22 @@
-<mat-card style="max-width: 400px; margin: 0% 5% 0;">
-    <mat-list>
-        <div  mat-subheader>Tarefas</div>
+<div style="height: 5%;"></div>
+
+<tk-card-list>
+    <div style="display: flex; justify-content: space-between" mat-subheader>
+            Tarefas
+            <tk-modal-add-task></tk-modal-add-task>
+        </div>
         <div *ngFor="let tarefa of tarefas" class="">
-            <mat-list-item *ngIf="!tarefa.concluido">
-                <div mat-line>{{tarefa.nome}}</div>
-                <button [matBadge]="tarefa.tempo" matBadgePosition="before" matBadgeColor="primary" style="margin-left: 2%;" mat-stroked-button>Começar</button>
-            </mat-list-item>
+            <tk-tarefas-pendente [nome]="tarefa.nome" [concluido]="tarefa.concluido" [tempo]=tarefa.tempo>
+                <tk-btn-delete (click)="deleteTask(tarefa.id)"></tk-btn-delete>
+            </tk-tarefas-pendente>
         </div>
         
         <mat-divider></mat-divider>
+
         <div mat-subheader>Tarefas Concluidas</div>
         <div *ngFor="let tarefa of tarefas" class="">
-            <mat-list-item *ngIf="tarefa.concluido">
-                <div mat-line>{{tarefa.nome}}</div>
-                <button style="margin-left: 2%;" mat-button>Concluido</button>
-            </mat-list-item>
+            <tk-tarefas-concluido [nome]="tarefa.nome" [concluido]="tarefa.concluido"></tk-tarefas-concluido>
         </div>
+</tk-card-list>
         
-    </mat-list>
-</mat-card>
+        

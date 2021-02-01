@@ -1,0 +1,25 @@
+<form>
+    <mat-form-field appearance="legacy">
+      <mat-label>Descrição da tarefa</mat-label>
+      <input 
+        matInput 
+        placeholder="Ex: Arrumar a cama"
+        #desc
+        (keyup)="descKeyUp($event)"
+        >
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Quantos minutos vai levar?</mat-label>
+      <input
+            #minutos
+            matInput
+            intInput
+            placeholder="Ex: 1"
+            (keyup)="tempoKeyUp($event)"
+            >
+    </mat-form-field>
+    <div style="display: flex; justify-content: flex-start " mat-dialog-actions>
+    <button (click)="createNewTask()" style="margin-left: 2%;" mat-button>Concluido</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+  </div>
+  </form>

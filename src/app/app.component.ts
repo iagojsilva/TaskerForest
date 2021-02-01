@@ -8,7 +8,7 @@ import { AfterViewInit, Component, ElementRef, Renderer2 } from '@angular/core';
 export class AppComponent implements AfterViewInit{
   title = 'TaskerForest';
 
-  gradient: string = '#808080'
+  color: string = '#303030'
 
 
   constructor(
@@ -18,6 +18,6 @@ export class AppComponent implements AfterViewInit{
     ){}
 
   ngAfterViewInit(){
-    this.render.setStyle(this.el.nativeElement.ownerDocument.body, 'background-color', this.gradient)
+    this.render.setStyle(this.el.nativeElement.ownerDocument.body, 'background-color', this.color)
   }
 }

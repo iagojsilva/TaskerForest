@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetTarefas } from './tarefas.service';
 import { Tarefa } from './tarefa.model';
 
 @Component({
@@ -8,51 +9,32 @@ import { Tarefa } from './tarefa.model';
 })
 export class MostrarTarefasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tarefaService: GetTarefas) { }
 
-  tarefas: Array<Tarefa> = [
-    {
-      'nome': 'Tomar Banho',
-      'tempo': 25,
-      'concluido': true,
-      'comecou': {
-        'status': false,
-        'tempoRestante': 0
-      }
-    },
-    {
-      'nome': 'Beber Agua',
-      'tempo': 15,
-      'concluido': false,
-      'comecou': {
-        'status': false,
-        'tempoRestante': 0
-      }
-    },
-    {
-      'nome': 'Arrumar a Cama',
-      'tempo': 60,
-      'concluido': false,
-      'comecou': {
-        'status': false,
-        'tempoRestante': 0
-      }
-    },
-    {
-      'nome': 'Leitura',
-      'tempo': 5,
-      'concluido': false,
-      'comecou': {
-        'status': true,
-        'tempoRestante': 0
-      }
-    },
+  tarefas: Array<Tarefa> = []
 
-]
-
+  task: Tarefa = {
+    nome: 'Limpar o quarto',
+    tempo: 60,
+    concluido: false,
+    comecou: {
+      'status': false,
+      'tempoRestante': 60
+    }
+  }
 
   ngOnInit(): void {
+    this.getTarefas()
     this.ordernarListaPorConcluido()
+  }
+
+  getTarefas(){
+    this.tarefaService
+        .getTarefas()
+        .subscribe(data =>{
+          console.log(data);
+          this.tarefas = data
+        })
   }
 
 
@@ -67,5 +49,12 @@ export class MostrarTarefasComponent implements OnInit {
     });
   }
 
+  
+  createNewTask(task: Tarefa){
+    this.tarefaService.createNewTarefa(task).subscribe(data=>console.log(data))
+  }
 
+  deleteTask(id?: number){
+    this.tarefaService.deleteTask(id).subscribe(data=>console.log)
+  }
 }
