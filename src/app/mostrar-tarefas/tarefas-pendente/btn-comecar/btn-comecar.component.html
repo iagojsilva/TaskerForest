@@ -1,0 +1,14 @@
+<button 
+    (click)="openDialog()" 
+    [matBadge]="tempo" 
+    matBadgePosition="before" 
+    matBadgeColor="primary" 
+    style="margin-left: 2%;" 
+    mat-stroked-button
+    [disabled]="disabled"
+    >
+    Começar
+    
+    </button>
+    <span>{{name}}</span>
+    <span>{{counter.min}} : {{counter.sec}}</span>

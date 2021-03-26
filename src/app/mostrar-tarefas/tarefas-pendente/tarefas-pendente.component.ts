@@ -8,10 +8,9 @@ import { Tarefa } from '../tarefa.model';
 })
 export class TarefasPendenteComponent implements OnInit {
 
-  @Input() nome: string = ''
-  @Input() tempo: number = 0
-  @Input() concluido: boolean = false
-  @Input() id: number = 0
+  @Input() nome: string = '';
+  @Input() concluido: boolean = false;
+  @Input() tempo: number = 0;
 
   constructor() { }
 

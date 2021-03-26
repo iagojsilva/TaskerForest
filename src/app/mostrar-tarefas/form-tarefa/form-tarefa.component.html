@@ -6,6 +6,9 @@
         placeholder="Ex: Arrumar a cama"
         #desc
         (keyup)="descKeyUp($event)"
+        required 
+        minlength="4" 
+        appForbiddenName="bob;iago"
         >
     </mat-form-field>
     <mat-form-field appearance="legacy">
@@ -16,6 +19,9 @@
             intInput
             placeholder="Ex: 1"
             (keyup)="tempoKeyUp($event)"
+            required 
+            minlength="1" 
+            appForbiddenName="bob,iago"
             >
     </mat-form-field>
     <div style="display: flex; justify-content: flex-start " mat-dialog-actions>

@@ -6,7 +6,7 @@
             <tk-modal-add-task></tk-modal-add-task>
         </div>
         <div *ngFor="let tarefa of tarefas" class="">
-            <tk-tarefas-pendente [nome]="tarefa.nome" [concluido]="tarefa.concluido" [tempo]=tarefa.tempo>
+            <tk-tarefas-pendente [nome]="tarefa.nome" [concluido]="tarefa.concluido" [tempo]="tarefa.tempo">
                 <tk-btn-delete (click)="deleteTask(tarefa.id)"></tk-btn-delete>
             </tk-tarefas-pendente>
         </div>

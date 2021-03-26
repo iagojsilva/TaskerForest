@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface DialogData {
@@ -24,13 +24,13 @@ export class ModalAddTaskComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(DialogCreateNewTaskComponent, {
+    let dialogRef = this.dialog.open(DialogCreateNewTaskComponent, {
       height: '270px',
       width: '270px',
-      data: {
-        animal: 'panda'
-      }
     });
+
+    let instance = dialogRef.componentInstance;
+    instance.title = "Criar nova Tarefa"
   }
 }
 
@@ -48,7 +48,7 @@ export class DialogCreateNewTaskComponent {
     public dialogRef: MatDialogRef<DialogCreateNewTaskComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
-
+  @Input() title: string = '';
 
   onNoClick(): void {
     this.dialogRef.close();
